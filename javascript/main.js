@@ -2,7 +2,10 @@ const allIssuesArray=[]
 const allIssues = () => {
     fetch("../shanto.json")
         .then(res => res.json())
-        .then(jeson => showallissues(jeson.data))
+        .then(jeson => {
+            allIssuesArray.push(...jeson)
+            showallissues(allIssuesArray)
+        })
             
 };
 
