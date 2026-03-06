@@ -4,14 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/github-logo-mini.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>GitHub Issues Tracker</title>
 </head>
 
 <body>
+    <div class="navbar bg-base-100 shadow-sm">
+        <div class=" flex-1">
 
+            <a class="btn btn-ghost text-xl font-bold"><img src="assets/github-logo-mini.png" alt="">GitHub Issues
+                Tracker</a>
+        </div>
+        <div class="flex gap-2">
+            <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+            <button class="btn btn-primary" id="submitbtn"><i class="fa-solid fa-plus"></i>New Issue</button>
+        </div>
+    </div>
+    <main>
+        <div class="container mx-auto">
+            <div class="p-6 mt-16 shadow-2xl">
+                <button class="btn custom-tab">All</button>
+                <button class="btn custom-tab">Open</button>
+                <button class="btn custom-tab">Closed</button>
+            </div>
+        </div>
+        <section>
+            <div class="container mx-auto pt-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 " id="card__container"></div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="javascript/main.js"></script>
 </body>
 
 </html>
