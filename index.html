@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Geist', sans-serif;scroll-behavior: smooth; }
+    </style>
+    <title>GitHub Issues Tracker</title>
+</head>
+
+<body class="bg-base-200 min-h-screen flex justify-center items-center">
+
+    <main class="flex justify-center items-center w-full px-4">
+        <div class="card bg-base-100 shadow-sm border border-base-300 w-full max-w-sm">
+            <div class="card-body gap-4">
+
+                <div class="flex flex-col items-center text-center gap-3">
+                    <img src="assets/github-logo.png" alt="">
+                    <div>
+                        <h1 class="text-xl font-bold">GitHub Issues Tracker</h1>
+                        <p class="text-sm text-base-content/50">Sign in to manage your issues</p>
+                    </div>
+                </div>
+
+
+                <fieldset class="fieldset gap-0">
+                    <legend class="fieldset-legend">Username</legend>
+                    <input type="text" class="input input-bordered w-full" id="username" placeholder="Enter Username" value="admin"/>
+                    <p class="fieldset-label text-primary">Default: admin</p>
+                </fieldset>
+                <fieldset class="fieldset gap-0">
+                    <legend class="fieldset-legend">Password</legend>
+                    <input type="password" class="input input-bordered w-full" id="password" placeholder="Enter Password" value="admin123" />
+                    <p class="fieldset-label text-primary">Default: admin123</p>
+                </fieldset>
+                <button class="btn btn-primary w-full" id="submitbtn">Sign In</button>
+                <div class="divider text-base-content/40 text-sm">OR</div>
+                <div class="bg-base-200 rounded-box p-4 text-center text-sm">
+                    <p class="text-base-content/50 mb-1">Demo Credentials:</p>
+                    <p><span class="font-bold">Username:</span> admin</p>
+                    <p><span class="font-bold">Password:</span> admin123</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
