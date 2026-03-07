@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +8,65 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>GitHub Issues Tracker</title>
 </head>
+<body class="bg-base-200 min-h-screen">
 
-<body>
-    <div class="navbar bg-base-100 shadow-sm">
-        <div class=" flex-1">
-
-            <a class="btn btn-ghost text-xl font-bold"><img src="assets/github-logo-mini.png" alt="">GitHub Issues
-                Tracker</a>
+    <div class="navbar bg-base-100 shadow-sm px-4 md:px-10 lg:px-20">
+        <div class="flex-1">
+            <a class="btn btn-ghost font-bold gap-2 text-base md:text-xl">
+                <img src="assets/github-logo-mini.png" alt="" class="w-6 h-6">
+                <span class="hidden sm:inline">GitHub Issues Tracker</span>
+                <span class="sm:hidden">Issues</span>
+            </a>
         </div>
         <div class="flex gap-2">
-            <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-            <button class="btn btn-primary" id="submitbtn"><i class="fa-solid fa-plus"></i>New Issue</button>
+            <input type="text" placeholder="Search" class="input input-bordered input-sm md:input-md w-24 sm:w-36 md:w-auto" />
+            <button class="btn btn-primary btn-sm md:btn-md gap-1" id="submitbtn">
+                + <span class="hidden sm:inline">New Issue</span>
+            </button>
         </div>
     </div>
-    <main>
+
+    <main class="py-6 px-4 md:px-6">
         <div class="container mx-auto">
-            <div class="p-6 mt-16 shadow-2xl">
-                <button class="btn custom-tab">All</button>
-                <button class="btn custom-tab">Open</button>
-                <button class="btn custom-tab">Closed</button>
+            <div class="bg-base-100 rounded-2xl shadow-sm overflow-hidden">
+
+                <!-- Tabs -->
+                <div class="p-4 md:p-6 flex gap-2 border-b border-base-300">
+                    <button class="btn btn-sm custom-tab active">All</button>
+                    <button class="btn btn-sm custom-tab">Open</button>
+                    <button class="btn btn-sm custom-tab">Closed</button>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-base-300 px-4 md:px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="avatar placeholder">
+                            <div class="bg-primary/10 text-primary rounded-full w-9 md:w-10 flex justify-center items-center">
+                                <img src="assets/Aperture.png" alt="" class="w-5 h-5 md:w-6 md:h-6">
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-base md:text-lg" id="issue__count">Issues</h2>
+                            <p class="text-xs md:text-sm text-base-content/50">Track and manage your project issues</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm">
+                        <span class="flex items-center gap-1.5">
+                            <span class="badge badge-xs bg-[#00A96E] border-none"></span> Open
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <span class="badge badge-xs bg-purple-400 border-none"></span> Closed
+                        </span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 md:p-6" id="card__container"></div>
             </div>
         </div>
-        <section>
-            <div class="container mx-auto pt-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 " id="card__container"></div>
-            </div>
-        </section>
+        <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle"></dialog>
     </main>
 
 
     <script src="javascript/main.js"></script>
 </body>
-
 </html>

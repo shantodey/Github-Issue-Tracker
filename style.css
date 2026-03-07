@@ -4,7 +4,12 @@ body,html{
     scroll-behavior: smooth;
     
 }
-
+.shadows{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card__shadows{
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
 
 .custom-tab:hover {
     background-color: #422AD5 !important;
@@ -14,8 +19,9 @@ body,html{
 
 .custom-tab {
     background-color: transparent;
-    border: 1px solid #422AD5;
-    color: #422AD5;
+    border: 2px solid #E4E4E7 !important;
+    color: #9ca3af !important;
+    min-width: 120px;
 }
 
 .custom-tab::before {
