@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <title>GitHub Issues Tracker</title>
 </head>
+
 <body class="bg-base-200 min-h-screen">
 
     <div class="navbar bg-base-100 shadow-sm px-4 md:px-10 lg:px-20">
@@ -21,7 +23,8 @@
             </a>
         </div>
         <div class="flex gap-2">
-            <input type="text" placeholder="Search" class="input input-bordered input-sm md:input-md w-24 sm:w-36 md:w-auto" />
+            <input type="text" placeholder="Search"
+                class="input input-bordered input-sm md:input-md w-24 sm:w-36 md:w-auto" />
             <button class="btn btn-primary btn-sm md:btn-md gap-1" id="submitbtn">
                 + <span class="hidden sm:inline">New Issue</span>
             </button>
@@ -33,16 +36,17 @@
             <div class="bg-base-100 rounded-2xl shadow-sm overflow-hidden">
 
                 <!-- Tabs -->
-                <div class="p-4 md:p-6 flex gap-2 border-b border-base-300">
-                    <button class="btn btn-sm custom-tab active">All</button>
-                    <button class="btn btn-sm custom-tab">Open</button>
-                    <button class="btn btn-sm custom-tab">Closed</button>
+                <div class="p-4 md:p-6 flex gap-2 border-b border-base-300" id="button__group">
+                    <button class="btn  custom-tab active" data-tab="statusAll" id="statusAll">All</button>
+                    <button class="btn  custom-tab" id="open_data" data-tab="statusOpen">Open</button>
+                    <button class="btn  custom-tab" id="closed" data-tab="statusClosed">Closed</button>
                 </div>
 
                 <div class="flex flex-wrap items-center justify-between gap-3 border-b border-base-300 px-4 md:px-6 py-4">
                     <div class="flex items-center gap-3">
                         <div class="avatar placeholder">
-                            <div class="bg-primary/10 text-primary rounded-full w-9 md:w-10 flex justify-center items-center">
+                            <div
+                                class="bg-primary/10 text-primary rounded-full w-9 md:w-10 flex justify-center items-center">
                                 <img src="assets/Aperture.png" alt="" class="w-5 h-5 md:w-6 md:h-6">
                             </div>
                         </div>
@@ -60,7 +64,9 @@
                         </span>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 md:p-6" id="card__container"></div>
+
+                <div class="bg-base-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 md:p-6"
+                    id="card__container"></div>
             </div>
         </div>
         <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle"></dialog>
@@ -69,4 +75,5 @@
 
     <script src="javascript/main.js"></script>
 </body>
+
 </html>
