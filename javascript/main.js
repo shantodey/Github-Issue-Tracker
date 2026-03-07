@@ -151,4 +151,13 @@ const displayissueDetels = (word) => {
 };
 
 allIssues()
-
+document.getElementById("submitbtn").addEventListener('click', () => {
+    const input = document.getElementById("inputfild")
+    const searchValue = input.value.trim().toLowerCase()
+    const filtered = statusAll.filter(issue =>
+        issue.title.toLowerCase().includes(searchValue)
+    )
+    cardContainer.innerHTML = ''
+    updateCount(filtered)
+    filtered.forEach(element => renderdata(element))
+})
