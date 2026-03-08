@@ -21,7 +21,7 @@ const statusAll = []
 const statusOpen = []
 const statusClosed = []
 const cardContainer = document.getElementById('card__container')
-
+const buttonGrou = document.getElementById('button__group');
 
 // update count
 const updateCount=(target)=>{
@@ -32,6 +32,7 @@ const updateCount=(target)=>{
 
 // faching data form api
 const allIssues = async () => {
+     spinner(true)
     const response = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await response.json()
     statusAll.push(...data.data)
@@ -39,6 +40,7 @@ const allIssues = async () => {
     statusClosed.push(...data.data.filter(el => el.status === 'closed'))
     showallissues(statusAll)
     updateCount(statusAll)
+     spinner(false)
 
 };
 
@@ -53,16 +55,7 @@ const issueNo = async (id) => {
 
 
 // togole button 
-const buttonGrou = document.getElementById('button__group');
-buttonGrou.addEventListener('click', (e) => {
-    const btn = e.target.id
-    cardContainer.innerHTML = '';
-    const target = btn === 'open_data' ? statusOpen : btn === 'closed' ? statusClosed : statusAll;
-    updateCount(target)
-    for (const element of target) {
-        renderdata(element)
-    }
-})
+
 
 
 const showallissues = (issue) => {
@@ -70,6 +63,8 @@ const showallissues = (issue) => {
         renderdata(element)
     }
 }
+
+// creating cards
 const renderdata = (element) => {
     const cardContainer = document.getElementById('card__container')
     const createCard = document.createElement('div')
@@ -99,7 +94,7 @@ const renderdata = (element) => {
                     </div >
                     <div>
                         <p class="text-[12px] text-base-content/50">#${element.id} by ${element.author}</p>
-                        <p class="text-[12px] text-base-content/50">1/15/2024</p>
+                         <p class="text-[12px] text-base-content/50">${new Date(element.createdAt).toLocaleDateString()}</p>
                     </div>
                 </div >
             `
@@ -115,7 +110,7 @@ const displayissueDetels = (word) => {
                                 <h3 class="text-xl font-bold mb-2">${word.title}</h3>
                                 <div class="flex items-center gap-2 mb-4">
                                     <span class="badge ${word.status === 'open' ? "bg-[#00A96E]" : "bg-[#9b49f7]"}  text-white border-none px-3 py-2">${word.status}</span>
-                                    <span class="text-sm text-base-content/50">• Opened by ${word.author} • 22/02/2026</span>
+                                    <span class="text-sm text-base-content/50">• Opened by ${word.author} • ${new Date(word.createdAt).toLocaleDateString()}</span>
                                 </div>
                                 <div class="flex gap-2 mb-4">
                                     ${word.labels.map(function (label) {
@@ -150,7 +145,27 @@ const displayissueDetels = (word) => {
         `;
 };
 
-allIssues()
+buttonGrou.addEventListener('click', (e) => {
+    const btn = e.target.closest('button')
+    if (!btn) return
+
+    // active toggle
+    buttonGrou.querySelectorAll('button').forEach(b => b.classList.remove('active'))
+    btn.classList.add('active')
+
+    cardContainer.innerHTML = ''
+    const target = btn.id === 'open_data' ? statusOpen : btn.id === 'closed' ? statusClosed : statusAll
+    updateCount(target)
+    spinner(true)
+    setTimeout(()=>{
+        for (const element of target) {
+            renderdata(element)
+        }
+        spinner(false)
+    },300)
+})
+
+// search funcation
 document.getElementById("submitbtn").addEventListener('click', () => {
     const input = document.getElementById("inputfild")
     const searchValue = input.value.trim().toLowerCase()
@@ -161,3 +176,9 @@ document.getElementById("submitbtn").addEventListener('click', () => {
     updateCount(filtered)
     filtered.forEach(element => renderdata(element))
 })
+
+// spinner
+const spinner=(spin)=>{
+    spin== true?document.getElementById('spinner').classList.remove("hidden"):document.getElementById('spinner').classList.add("hidden")
+}
+allIssues()

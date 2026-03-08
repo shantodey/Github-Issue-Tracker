@@ -36,7 +36,7 @@
 
                 <!-- Tabs -->
                 <div class="p-4 md:p-6 flex gap-2 border-b border-base-300" id="button__group">
-                    <button class="btn  custom-tab active" data-tab="statusAll" id="statusAll">All</button>
+                    <button class="btn custom-tab active" data-tab="statusAll" id="statusAll">All</button>
                     <button class="btn  custom-tab" id="open_data" data-tab="statusOpen">Open</button>
                     <button class="btn  custom-tab" id="closed" data-tab="statusClosed">Closed</button>
                 </div>
@@ -63,6 +63,13 @@
                         </span>
                     </div>
                 </div>
+
+                <!-- spinner -->
+                <div id="spinner" class=" flex justify-center items-center hidden py-10">
+                    <span class="loading loading-dots loading-xl"></span>
+                </div>
+
+                <!-- cards container -->
 
                 <div class="bg-base-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 md:p-6"
                     id="card__container"></div>
